@@ -2,7 +2,7 @@
     <div class="py-5">
         <div class="row">
             <div class="col-lg-8 mx-auto">
-                <div *ngIf="!todayIsTheDay" class="rounded bg-gradient-3 text-white shadow p-5 text-center mb-5">
+                <div *ngIf="dayNotArrived" class="rounded bg-gradient-3 text-white shadow p-5 text-center mb-5">
                     <p class="mb-0 font-weight-bold text-uppercase">Divya Rawat's Birthday Countdown 🎂🥳🎉</p>
                     <div class="countdown-circles d-flex flex-wrap justify-content-center pt-4">
                         <div class="holder m-2"><span class="h1 font-weight-bold">{{ leftDays }}</span> <div *ngIf="leftDays > 1">Days</div> <div *ngIf="leftDays <= 1">Day</div> </div>
@@ -11,6 +11,7 @@
                         <div class="holder m-2"><span class="h1 font-weight-bold">{{ leftSeconds }}</span> Seconds</div>
                     </div>
                 </div>
+                <!-- <p>{{countDownDate | date }}</p>  -->
                 <!-- <div class="rounded bg-gradient-3 text-white shadow p-5 text-center mb-5">
                     <p class="mb-0 font-weight-bold text-uppercase">Divya Rawat's Birthday</p>
                     <div class="countdown py-4">

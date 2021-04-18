@@ -7,7 +7,9 @@ import * as confetti from 'canvas-confetti';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  private countDownDate = new Date('Jul 7, 2021 12:00:00').getTime();
+  // public countDownDate = new Date('Jul 7, 2021 12:00:00').getTime();
+  public countDownDate = new Date('Jul 7, 2021').getTime();
+  // public countDownDate = new Date('Apr 18, 2021 21:10:00').getTime();
   public distance: any;
   public intervalX: any;
   public leftDays: any = 0;
@@ -15,6 +17,7 @@ export class HomeComponent implements OnInit {
   public leftMins: any = 0;
   public leftSeconds: any = 0;
   public todayIsTheDay: boolean = false;
+  public dayNotArrived:boolean = true;
 
   constructor(private renderer2: Renderer2, private elementRef: ElementRef) {}
 
@@ -42,21 +45,25 @@ export class HomeComponent implements OnInit {
       this.leftSeconds = seconds;
 
       if (this.distance < 0) {
+        console.log("yeh wali date nikal gayi...")
+        this.dayNotArrived = false;
         clearInterval(this.intervalX);
       }
       else if(this.distance == 0) {
-        this.todayIsTheDay = true;
+        this.dayNotArrived = false;
+        this.surprise();
       }
     }, 1000);
   }
 
-  public surprise(): void  {
+  public surprise()  
+  {
     const canvas = this.renderer2.createElement('canvas');
     this.renderer2.appendChild(this.elementRef.nativeElement, canvas);
-    const myConfetti = confetti.create(canvas,  {
+    const myConfetti = confetti.create(canvas,  
+    {
       resize: false,
     });
-
     myConfetti();
   }
 
