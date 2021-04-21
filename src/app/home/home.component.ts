@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
   public leftSeconds: any = 0;
   public todayIsTheDay: boolean = false;
   public dayNotArrived:boolean = true;
+  public hideNavbar: boolean = true;
 
   constructor(private renderer2: Renderer2, private elementRef: ElementRef) {}
 
