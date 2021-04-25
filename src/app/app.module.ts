@@ -11,6 +11,10 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { BirthdayCardComponent } from './birthday-card/birthday-card.component';
 import { WishesComponent } from './wishes/wishes.component';
 
+import { HttpClientModule } from '@angular/common/http';
+import { DateService } from './services/date-service.service';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,14 +23,15 @@ import { WishesComponent } from './wishes/wishes.component';
     FooterComponent,
     NavbarComponent,
     BirthdayCardComponent,
-    WishesComponent
+    WishesComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [DateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

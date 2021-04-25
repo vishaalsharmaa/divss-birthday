@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, Renderer2 } from '@angular/core';
+import { Component, OnInit, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import * as confetti from 'canvas-confetti';
 
 @Component({
@@ -20,7 +20,13 @@ export class HomeComponent implements OnInit {
   public dayNotArrived:boolean = true;
   public hideNavbar: boolean = true;
 
+ 
+
+
   constructor(private renderer2: Renderer2, private elementRef: ElementRef) {}
+
+  
+  @ViewChild('fireWorkContainer' , {static: true}) fireWorkContainer: any;
 
   ngOnInit(): void {
     this.birthdayCountDown();
@@ -67,5 +73,6 @@ export class HomeComponent implements OnInit {
     });
     myConfetti();
   }
+
 
 }
