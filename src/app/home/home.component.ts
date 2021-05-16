@@ -1,5 +1,7 @@
 import { Component, OnInit, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import * as confetti from 'canvas-confetti';
+import { DateService } from '../services/date-service.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-home',
@@ -20,16 +22,43 @@ export class HomeComponent implements OnInit {
   public dayNotArrived:boolean = true;
   public hideNavbar: boolean = true;
 
+  public displayMessage:any = [];
+
  
-
-
-  constructor(private renderer2: Renderer2, private elementRef: ElementRef) {}
+  constructor(private renderer2: Renderer2, private elementRef: ElementRef, private dataService: DateService, private matSnackBar: MatSnackBar) {}
 
   
   @ViewChild('fireWorkContainer' , {static: true}) fireWorkContainer: any;
 
   ngOnInit(): void {
     this.birthdayCountDown();
+    this.runService();
+  }
+
+
+  public runService()
+  {
+    this.dataService.getFinalCountDownMessages().subscribe(
+    (response)=>
+    {
+      if(response)
+      {
+        this.showEachDayMessage(response);
+      }
+      else
+      {
+        this.matSnackBar.open('No data', '', {
+          duration: 2500
+        });
+      }
+    },
+    (error:Error)=>
+    {
+      this.matSnackBar.open('Something went wrong! Inform Vishal ASAP.', '', {
+        duration: 2500
+      });
+      console.error(error);
+    });
   }
 
   public birthdayCountDown() {
@@ -52,7 +81,7 @@ export class HomeComponent implements OnInit {
       this.leftSeconds = seconds;
 
       if (this.distance < 0) {
-        console.log("yeh wali date nikal gayi...")
+        console.log("yeh wali date nikal gayi...");
         this.dayNotArrived = false;
         clearInterval(this.intervalX);
       }
@@ -61,6 +90,30 @@ export class HomeComponent implements OnInit {
         this.surprise();
       }
     }, 1000);
+  }
+
+
+  public showEachDayMessage(arrayParam:any)
+  {
+    var today = new Date;
+    today.setHours(0,0,0,0);
+
+    // Format accepted here isL: MM-DD-YYYY |  E.g. var count_date = "07-06-2021";
+    arrayParam.forEach( (item:any , index:any) => 
+    {
+      var messageDisplayDate = new Date(arrayParam[index].showDate);
+      
+      if(today.toISOString() == messageDisplayDate.toISOString())
+      {
+        var context = {
+          message : item.message,
+          show    : true,
+          showDate: messageDisplayDate,
+          messageBy: item.messageBy
+        };
+        this.displayMessage.push(context);
+      }
+    });
   }
 
   public surprise()  

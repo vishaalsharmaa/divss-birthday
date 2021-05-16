@@ -14,6 +14,14 @@
                 </div>
             </div>
         </div>
+        <div class="row" *ngIf="displayMessage">
+            <div class="col-lg-8 mx-auto">
+                <div class="alert alert-light text-dark" *ngFor="let m of displayMessage">
+                    <i class="text-justify">{{m.message}} <small *ngIf="m.messageBy" class="ml-2 text-muted">~ {{m.messageBy}}</small>
+                    </i>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 

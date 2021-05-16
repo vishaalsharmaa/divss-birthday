@@ -15,6 +15,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { DateService } from './services/date-service.service';
 
 
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,13 +26,14 @@ import { DateService } from './services/date-service.service';
     FooterComponent,
     NavbarComponent,
     BirthdayCardComponent,
-    WishesComponent,
+    WishesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSnackBarModule
   ],
   providers: [DateService],
   bootstrap: [AppComponent]
