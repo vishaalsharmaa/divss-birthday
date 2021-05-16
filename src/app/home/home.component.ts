@@ -39,11 +39,12 @@ export class HomeComponent implements OnInit {
   public runService()
   {
     this.dataService.getFinalCountDownMessages().subscribe(
-    (response)=>
+    (response:any)=>
     {
-      if(response)
+      if(response.messages)
       {
-        this.showEachDayMessage(response);
+        var res = response.messages
+        this.showEachDayMessage(res);
       }
       else
       {
