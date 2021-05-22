@@ -1,0 +1,43 @@
+mat-grid-tile {
+    background: white;
+    img {
+        max-width: 90%;
+        max-height: 90%;
+    }
+}
+mat-tab-group {
+    width: 80%;
+    margin: 10%;
+}
+
+.photoModal {
+    .modal-body {
+        img {
+            max-width: 100%;
+        }
+    }
+    .modal-footer {
+        font-size: 20px;
+        text-align: center;
+        font-family: cursive;
+        display: block;
+    }
+    
+}
+
+@media (max-width: 599px) {
+    .photoModal {
+        .modal-body {
+            img {
+                max-width: 100%;
+            }
+        }
+        .modal-footer {
+            font-size: 14px;
+            text-align: center;
+            font-family: cursive;
+            display: block;
+        }
+        
+    }
+}

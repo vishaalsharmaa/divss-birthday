@@ -1,0 +1,32 @@
+<mat-tab-group>
+    <mat-tab label="All">
+        <div class='gallery'>
+            <mat-grid-list cols="3" rowHeight="3:2">
+                <mat-grid-tile *ngFor="let image of images" (click)="showDialog(image)">
+                    <img [src]="image.src">
+                </mat-grid-tile>
+            </mat-grid-list>
+        </div>
+    </mat-tab>
+    <mat-tab label="Favourite">
+        <div class='gallery'>
+            <mat-grid-list cols="3" rowHeight="3:2">
+                <mat-grid-tile *ngFor="let image of images" (click)="showDialog(image)">
+                    <img [src]="image.src">
+                </mat-grid-tile>
+            </mat-grid-list>
+        </div>
+    </mat-tab>
+</mat-tab-group>
+  
+
+<app-modal class="photoModal" *ngIf="isShowModal" (closeModal)="closeDialog()">
+    <div class="modal-body">
+        <img [src]="modalImage.src">
+    </div>
+    <div class="modal-footer">
+        <p>This is demo text for poloroid image</p>
+    </div>
+</app-modal>
+
+  

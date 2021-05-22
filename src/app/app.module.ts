@@ -8,7 +8,10 @@ import { HomeComponent } from './home/home.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
-
+import { GalleryComponent } from './app/gallery/gallery.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatTabsModule } from '@angular/material/tabs';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -16,12 +19,16 @@ import { NavbarComponent } from './navbar/navbar.component';
     HomeComponent,
     NotfoundComponent,
     FooterComponent,
-    NavbarComponent
+    NavbarComponent,
+    GalleryComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatGridListModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
