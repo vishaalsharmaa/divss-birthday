@@ -28,6 +28,7 @@ export class HomeComponent implements OnInit {
   public hideNavbar: boolean = true;
 
   public displayMessage:any = [];
+  public dailyGenerricMessage:any;
 
   // speech
   public speech: any;
@@ -47,10 +48,10 @@ export class HomeComponent implements OnInit {
 
         this.speech.init({
             volume  : 1,
-            lang    : 'en-GB',
+            lang    : 'en-US',
             rate    : 1,
             pitch   : 1,
-            voice   :'Google UK English Female',
+            voice   :'Google US English',
             splitSentences: true,
             listeners: {
               onvoiceschanged: (voices:any) => {
@@ -65,7 +66,7 @@ export class HomeComponent implements OnInit {
 
         }).catch( (e:any) => {
             console.error("An error occured while initializing : ", e)
-        })
+        });
     }
   }
 
@@ -73,6 +74,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.birthdayCountDown();
     this.runService();
+    this.genericMessageToDisplay();
   }
 
   ngAfterViewInit() {
@@ -91,7 +93,7 @@ export class HomeComponent implements OnInit {
       }
       else
       {
-        this.matSnackBar.open('No data', '', {
+        this.matSnackBar.open('Error fetching data.', '', {
           duration: 2500
         });
       }
@@ -138,12 +140,32 @@ export class HomeComponent implements OnInit {
   }
 
 
+  public genericMessageToDisplay()
+  {
+    this.dataService.getGenericMessage().subscribe((response:any)=> {
+      
+      if(response.status == "SUCCESS") {
+        var res = response.dailybugle;
+        this.dailyGenerricMessage = res;
+      }
+      else {
+        console.error("An error occuired.");
+      }
+    },
+    (error:Error)=>{
+      this.matSnackBar.open('Something went wrong with genericMessageToDisplay(). Inform Vishal ASAP.', '', {
+        duration: 2500
+      });
+    });
+  }
+
+
   public showEachDayMessage(arrayParam:any)
   {
     var today = new Date;
     today.setHours(0,0,0,0);
 
-    // Format accepted here isL: MM-DD-YYYY |  E.g. var count_date = "07-06-2021";
+    // Date Format accepted here is: MM-DD-YYYY |  E.g. var count_date = "07-06-2021";
     arrayParam.forEach( (item:any , index:any) => 
     {
       var messageDisplayDate = new Date(arrayParam[index].showDate);
@@ -186,6 +208,7 @@ export class HomeComponent implements OnInit {
 
   start(left:number)
   {
+
     var finalSentence = `${left} days left for your birthday.`;
 
     this.speech.speak(

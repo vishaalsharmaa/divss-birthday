@@ -12,6 +12,8 @@ export class DateService {
 
   public API_URL = 'https://raw.githubusercontent.com/vishaalsharmaa/vishaalsharmaa/master/pre-birthday-message.json';
 
+  public PARENT_URL = 'https://raw.githubusercontent.com/vishaalsharmaa/vishaalsharmaa/master/';
+
   // Handle Errors 
   error(error: HttpErrorResponse) {
     let errorMessage = '';
@@ -28,7 +30,20 @@ export class DateService {
 
   getFinalCountDownMessages()
   {
+    var FINAL_URL = this.PARENT_URL + 'pre-birthday-message.json';
     return this.http.get(this.API_URL).pipe(catchError(this.error));
+  }
+
+  getGenericMessage()
+  {
+    var GENERIC_MSG_URL = 'https://raw.githubusercontent.com/vishaalsharmaa/vishaalsharmaa/master/generic-message.json';
+    return this.http.get(GENERIC_MSG_URL).pipe(catchError(this.error));
+  }
+
+  getBirthdayWishes()
+  {
+    var BIRTHDAY_WISHES ='https://raw.githubusercontent.com/vishaalsharmaa/vishaalsharmaa/master/wishes-by-friends.json';
+    return this.http.get(BIRTHDAY_WISHES).pipe(catchError(this.error));
   }
 
 

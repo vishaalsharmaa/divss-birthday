@@ -1,11 +1,28 @@
-<div class="birthday-card-body">
-  <div class="card">
-    <!-- <img [src]="https://github.com/vishaalsharmaa/divss-birthday/blob/master/src/assets/images/birthday.svg" alt="birthday" class="birthday"> -->
-      <div class="text">
-        <h1>Happy Birthday!!</h1>
-        <p>We hope you have a wonderful birthday.</p>
-        <p class="muted">~ Your friends</p>
+<div id="giganticCard" #giganticCard>
+  <div class="birthday-card-body">
+    <div class="card">
+      <img src="{{imageBannerURL}}" alt="birthday" class="birthday">
+        <div class="text">
+          <h1>Happy Birthday Divya!!</h1>
+          <p>We hope you have a wonderful birthday.</p>
+          <p class="muted font-italic">~ Your friends</p>
+        </div>
+        <div class="space"></div>
       </div>
-      <div class="space"></div>
-    </div>
+  </div>
 </div>
+
+<div class="container" *ngIf="wishesByFriends">
+  <div class="row">
+    <div class="col-md-4 mt-2 mb-2 mx-auto" *ngFor="let item of wishesByFriends">
+      <div class="card">
+        <img class="card-img-top" src="{{item.imageURL}}" alt="Card image cap">
+        <div class="card-body">
+          <p class="card-text text-md-left font-weight-normal">{{item.message}}</p>
+          <footer class="blockquote-footer"><cite title="Source Title">{{item.by}}</cite></footer>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -12,8 +12,8 @@ const routes: Routes =
   { path: '',   redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'gallery', component: GalleryComponent },
-  { path: 'birthday-card', component: BirthdayCardComponent },
-  { path: 'wishes', component: WishesComponent },
+  // { path: 'birthday-card', component: BirthdayCardComponent },
+  // { path: 'wishes', component: WishesComponent },
   { path: '**', component: NotfoundComponent }
 ];
 

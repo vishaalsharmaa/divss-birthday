@@ -2,7 +2,7 @@
   transition: all 0.2s ease-in-out;
 }
 
-.birthday-card-body {
+#giganticCard .birthday-card-body {
     display: grid;
     place-items: center;
     height: 100vh;
@@ -10,7 +10,7 @@
     font-family: "Open Sans", sans-serif;
   }
   
-  .card {
+#giganticCard .card {
     background: #fdfdfd;
     border-radius: 4px;
     height: 85vh;
@@ -26,10 +26,10 @@
   }
   
   @media only screen and (min-width: 1000px) {
-    .card {
+    #giganticCard .card {
       flex-direction: row-reverse;
     }
-    .card img.birthday {
+    #giganticCard .card img.birthday {
       width: 100%;
       max-width: 50vw;
       max-height: unset;
@@ -37,28 +37,28 @@
   }
   
   @media only screen and (max-height: 640px) {
-    .card {
+    #giganticCard .card {
       flex-direction: row-reverse;
     }
-    .card img.birthday {
+    #giganticCard .card img.birthday {
       width: 100%;
       max-width: 50vw;
       max-height: unset;
     }
   }
   
-  img.birthday {
+  #giganticCard img.birthday {
     max-height: 40vh;
   }
   
-  .text {
+  #giganticCard .text {
     padding: 1em;
   }
   
-  .muted {
+  #giganticCard .muted {
     opacity: 0.8;
   }
   
-  .space {
+  #giganticCard .space {
     height: 100px;
   }
