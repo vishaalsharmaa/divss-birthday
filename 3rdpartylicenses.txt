@@ -288,6 +288,9 @@ Apache-2.0
  
 
 
+speak-tts
+MIT
+
 zone.js
 MIT
 The MIT License
