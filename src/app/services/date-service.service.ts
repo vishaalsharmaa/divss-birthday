@@ -31,4 +31,11 @@ export class DateService {
     return this.http.get(this.API_URL).pipe(catchError(this.error));
   }
 
+
+  getIP()
+  {
+    var IP_FINDER = 'http://api.ipify.org/?format=json';
+    return this.http.get(IP_FINDER);
+  }
+
 }

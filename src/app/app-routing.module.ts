@@ -10,7 +10,7 @@ const routes: Routes =
 [
   { path: '',   redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  //{ path: 'birthday-card', component: BirthdayCardComponent },
+  { path: 'birthday-card', component: BirthdayCardComponent },
   { path: 'wishes', component: WishesComponent },
   { path: '**', component: NotfoundComponent }
 ];

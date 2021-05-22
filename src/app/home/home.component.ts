@@ -3,6 +3,9 @@ import * as confetti from 'canvas-confetti';
 import { DateService } from '../services/date-service.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
+// import * as Speech from 'speak-tts';
+import Speech from 'speak-tts';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -10,8 +13,10 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 export class HomeComponent implements OnInit {
   // public countDownDate = new Date('Jul 7, 2021 12:00:00').getTime();
-  public countDownDate = new Date('Jul 7, 2021').getTime();
   // public countDownDate = new Date('Apr 18, 2021 21:10:00').getTime();
+
+  public countDownDate = new Date('Jul 7, 2021').getTime();
+  
   public distance: any;
   public intervalX: any;
   public leftDays: any = 0;
@@ -24,22 +29,60 @@ export class HomeComponent implements OnInit {
 
   public displayMessage:any = [];
 
- 
-  constructor(private renderer2: Renderer2, private elementRef: ElementRef, private dataService: DateService, private matSnackBar: MatSnackBar) {}
+  // speech
+  public speech: any;
+  public speechData: any;
 
-  
   @ViewChild('fireWorkContainer' , {static: true}) fireWorkContainer: any;
+  @ViewChild('myButton')
+  myButton!: ElementRef;
+
+ 
+  constructor(private renderer2: Renderer2, private elementRef: ElementRef, private dataService: DateService, private matSnackBar: MatSnackBar) {
+    this.speech = new Speech();
+
+    if(this.speech.hasBrowserSupport()) // returns a boolean
+    { 
+        console.log("Has synthesis supported: " , this.speech.hasBrowserSupport());
+
+        this.speech.init({
+            volume  : 1,
+            lang    : 'en-GB',
+            rate    : 1,
+            pitch   : 1,
+            voice   :'Google UK English Female',
+            splitSentences: true,
+            listeners: {
+              onvoiceschanged: (voices:any) => {
+            }
+          }
+        }).then((data:any) => {
+            
+          // console.log("Speech is ready, voices are available", data);
+          this.speechData = data;
+          data.voices.forEach( (voice:any) => {
+          });
+
+        }).catch( (e:any) => {
+            console.error("An error occured while initializing : ", e)
+        })
+    }
+  }
+
 
   ngOnInit(): void {
     this.birthdayCountDown();
     this.runService();
   }
 
+  ngAfterViewInit() {
+    this.buttonAutoClick();
+  }
+
 
   public runService()
   {
-    this.dataService.getFinalCountDownMessages().subscribe(
-    (response:any)=>
+    this.dataService.getFinalCountDownMessages().subscribe((response:any)=>
     {
       if(response.messages)
       {
@@ -63,6 +106,7 @@ export class HomeComponent implements OnInit {
   }
 
   public birthdayCountDown() {
+    
     this.intervalX = setInterval(() => {
       var today = new Date().getTime();
       this.distance = this.countDownDate - today;
@@ -126,6 +170,40 @@ export class HomeComponent implements OnInit {
       resize: false,
     });
     myConfetti();
+  }
+
+ 
+
+  public buttonAutoClick() {
+    let el: HTMLElement = this.myButton.nativeElement as HTMLElement;
+    el.click();
+  }
+
+  public speakingBot() {
+    setTimeout(()=>this.start(this.leftDays) , 1200);
+  }
+
+
+  start(left:number)
+  {
+    var finalSentence = `${left} days left for your birthday.`;
+
+    this.speech.speak(
+    {
+      text: finalSentence,  
+    }).then(() => {
+        console.log("Success !")
+    }).catch( (e:any) => {
+        console.error("An error occurred :", e) 
+    })
+  }
+
+  pause() {
+    this.speech.pause();
+  }
+
+  resume() {
+    this.speech.resume();
   }
 
 
