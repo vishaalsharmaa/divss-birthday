@@ -12,7 +12,7 @@ export class NavbarComponent implements OnInit {
   public hideNavbar: boolean = true;
 
   ngOnInit(): void {
-    this.hideNavbar = true;
+    this.hideNavbar = false;
   }
 
 }

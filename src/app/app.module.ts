@@ -8,6 +8,10 @@ import { HomeComponent } from './home/home.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { GalleryComponent } from './app/gallery/gallery.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatTabsModule } from '@angular/material/tabs';
+import { ModalComponent } from './modal/modal.component';
 import { BirthdayCardComponent } from './birthday-card/birthday-card.component';
 import { WishesComponent } from './wishes/wishes.component';
 
@@ -25,6 +29,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     NotfoundComponent,
     FooterComponent,
     NavbarComponent,
+    GalleryComponent,
+    ModalComponent,
     BirthdayCardComponent,
     WishesComponent
   ],
@@ -32,6 +38,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    MatGridListModule,
+    MatTabsModule,
     HttpClientModule,
     MatSnackBarModule
   ],
