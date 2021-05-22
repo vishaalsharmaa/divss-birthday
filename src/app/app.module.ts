@@ -12,6 +12,15 @@ import { GalleryComponent } from './app/gallery/gallery.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTabsModule } from '@angular/material/tabs';
 import { ModalComponent } from './modal/modal.component';
+import { BirthdayCardComponent } from './birthday-card/birthday-card.component';
+import { WishesComponent } from './wishes/wishes.component';
+
+import { HttpClientModule } from '@angular/common/http';
+import { DateService } from './services/date-service.service';
+
+
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
 
 @NgModule({
   declarations: [
@@ -21,16 +30,20 @@ import { ModalComponent } from './modal/modal.component';
     FooterComponent,
     NavbarComponent,
     GalleryComponent,
-    ModalComponent
+    ModalComponent,
+    BirthdayCardComponent,
+    WishesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatGridListModule,
-    MatTabsModule
+    MatTabsModule,
+    HttpClientModule,
+    MatSnackBarModule
   ],
-  providers: [],
+  providers: [DateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

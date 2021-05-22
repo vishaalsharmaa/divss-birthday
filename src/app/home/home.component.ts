@@ -1,5 +1,10 @@
-import { Component, OnInit, ElementRef, Renderer2 } from '@angular/core';
+import { Component, OnInit, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import * as confetti from 'canvas-confetti';
+import { DateService } from '../services/date-service.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
+
+// import * as Speech from 'speak-tts';
+import Speech from 'speak-tts';
 
 @Component({
   selector: 'app-home',
@@ -8,8 +13,10 @@ import * as confetti from 'canvas-confetti';
 })
 export class HomeComponent implements OnInit {
   // public countDownDate = new Date('Jul 7, 2021 12:00:00').getTime();
-  public countDownDate = new Date('Jul 7, 2021').getTime();
   // public countDownDate = new Date('Apr 18, 2021 21:10:00').getTime();
+
+  public countDownDate = new Date('Jul 7, 2021').getTime();
+  
   public distance: any;
   public intervalX: any;
   public leftDays: any = 0;
@@ -20,13 +27,86 @@ export class HomeComponent implements OnInit {
   public dayNotArrived:boolean = true;
   public hideNavbar: boolean = true;
 
-  constructor(private renderer2: Renderer2, private elementRef: ElementRef) {}
+  public displayMessage:any = [];
+
+  // speech
+  public speech: any;
+  public speechData: any;
+
+  @ViewChild('fireWorkContainer' , {static: true}) fireWorkContainer: any;
+  @ViewChild('myButton')
+  myButton!: ElementRef;
+
+ 
+  constructor(private renderer2: Renderer2, private elementRef: ElementRef, private dataService: DateService, private matSnackBar: MatSnackBar) {
+    this.speech = new Speech();
+
+    if(this.speech.hasBrowserSupport()) // returns a boolean
+    { 
+        console.log("Has synthesis supported: " , this.speech.hasBrowserSupport());
+
+        this.speech.init({
+            volume  : 1,
+            lang    : 'en-GB',
+            rate    : 1,
+            pitch   : 1,
+            voice   :'Google UK English Female',
+            splitSentences: true,
+            listeners: {
+              onvoiceschanged: (voices:any) => {
+            }
+          }
+        }).then((data:any) => {
+            
+          // console.log("Speech is ready, voices are available", data);
+          this.speechData = data;
+          data.voices.forEach( (voice:any) => {
+          });
+
+        }).catch( (e:any) => {
+            console.error("An error occured while initializing : ", e)
+        })
+    }
+  }
+
 
   ngOnInit(): void {
     this.birthdayCountDown();
+    this.runService();
+  }
+
+  ngAfterViewInit() {
+    this.buttonAutoClick();
+  }
+
+
+  public runService()
+  {
+    this.dataService.getFinalCountDownMessages().subscribe((response:any)=>
+    {
+      if(response.messages)
+      {
+        var res = response.messages
+        this.showEachDayMessage(res);
+      }
+      else
+      {
+        this.matSnackBar.open('No data', '', {
+          duration: 2500
+        });
+      }
+    },
+    (error:Error)=>
+    {
+      this.matSnackBar.open('Something went wrong! Inform Vishal ASAP.', '', {
+        duration: 2500
+      });
+      console.error(error);
+    });
   }
 
   public birthdayCountDown() {
+    
     this.intervalX = setInterval(() => {
       var today = new Date().getTime();
       this.distance = this.countDownDate - today;
@@ -46,7 +126,7 @@ export class HomeComponent implements OnInit {
       this.leftSeconds = seconds;
 
       if (this.distance < 0) {
-        console.log("yeh wali date nikal gayi...")
+        console.log("yeh wali date nikal gayi...");
         this.dayNotArrived = false;
         clearInterval(this.intervalX);
       }
@@ -55,6 +135,30 @@ export class HomeComponent implements OnInit {
         this.surprise();
       }
     }, 1000);
+  }
+
+
+  public showEachDayMessage(arrayParam:any)
+  {
+    var today = new Date;
+    today.setHours(0,0,0,0);
+
+    // Format accepted here isL: MM-DD-YYYY |  E.g. var count_date = "07-06-2021";
+    arrayParam.forEach( (item:any , index:any) => 
+    {
+      var messageDisplayDate = new Date(arrayParam[index].showDate);
+      
+      if(today.toISOString() == messageDisplayDate.toISOString())
+      {
+        var context = {
+          message : item.message,
+          show    : true,
+          showDate: messageDisplayDate,
+          messageBy: item.messageBy
+        };
+        this.displayMessage.push(context);
+      }
+    });
   }
 
   public surprise()  
@@ -67,5 +171,40 @@ export class HomeComponent implements OnInit {
     });
     myConfetti();
   }
+
+ 
+
+  public buttonAutoClick() {
+    let el: HTMLElement = this.myButton.nativeElement as HTMLElement;
+    el.click();
+  }
+
+  public speakingBot() {
+    setTimeout(()=>this.start(this.leftDays) , 1200);
+  }
+
+
+  start(left:number)
+  {
+    var finalSentence = `${left} days left for your birthday.`;
+
+    this.speech.speak(
+    {
+      text: finalSentence,  
+    }).then(() => {
+        console.log("Success !")
+    }).catch( (e:any) => {
+        console.error("An error occurred :", e) 
+    })
+  }
+
+  pause() {
+    this.speech.pause();
+  }
+
+  resume() {
+    this.speech.resume();
+  }
+
 
 }
