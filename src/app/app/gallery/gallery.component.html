@@ -1,6 +1,6 @@
 <mat-tab-group>
     <mat-tab label="All">
-        <div class='gallery'>
+        <div class="gallery">
             <mat-grid-list cols="3" rowHeight="3:2">
                 <mat-grid-tile *ngFor="let image of images" (click)="showDialog(image)">
                     <img [src]="image.src">
