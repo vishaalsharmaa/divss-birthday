@@ -69,7 +69,7 @@ export class BirthdayCardComponent implements OnInit {
 
   public heartClick()
   {
-    var OTHER_APP_URL = '';
+    var OTHER_APP_URL = 'https://vishaalsharmaa.github.io/hbd-divsss/';
     window.open(OTHER_APP_URL, "_blank");
   }
 
