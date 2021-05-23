@@ -46,6 +46,12 @@ export class DateService {
     return this.http.get(BIRTHDAY_WISHES).pipe(catchError(this.error));
   }
 
+  getGallary()
+  {
+    var GALLARY_API = 'https://raw.githubusercontent.com/vishaalsharmaa/vishaalsharmaa/master/gallary-content.json';
+    return this.http.get(GALLARY_API).pipe(catchError(this.error));
+  }
+
 
   getIP()
   {
