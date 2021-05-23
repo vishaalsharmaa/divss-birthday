@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-12 mx-auto">
             <mat-tab-group>
-                <mat-tab label="All">
+                <mat-tab label="Manusmriti">
                     <div class="gallery">
                         <mat-grid-list cols="3" rowHeight="3:2">
                             <mat-grid-tile *ngFor="let image of images" (click)="showDialog(image)">
@@ -11,7 +11,7 @@
                         </mat-grid-list>
                     </div>
                 </mat-tab>
-                <mat-tab label="Favourite">
+                <mat-tab label="Office">
                     <div class='gallery'>
                         <mat-grid-list cols="3" rowHeight="3:2">
                             <mat-grid-tile *ngFor="let image of images" (click)="showDialog(image)">
@@ -19,6 +19,12 @@
                             </mat-grid-tile>
                         </mat-grid-list>
                     </div>
+                </mat-tab>
+                <mat-tab label="Trips">
+                    
+                </mat-tab>
+                <mat-tab label="Moments">
+
                 </mat-tab>
             </mat-tab-group>
         </div>

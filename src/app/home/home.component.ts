@@ -16,7 +16,8 @@ export class HomeComponent implements OnInit {
   // public countDownDate = new Date('Apr 18, 2021 21:10:00').getTime();
 
   public countDownDate = new Date('Jul 7, 2021').getTime();
-  
+
+  public hideView = true;  
   public distance: any;
   public intervalX: any;
   public leftDays: any = 0;
@@ -29,6 +30,17 @@ export class HomeComponent implements OnInit {
 
   public displayMessage:any = [];
   public dailyGenerricMessage:any;
+
+
+  public birthdayConfig: any = {
+    birthDayBannerText:"Happy Birthday Divsss",
+    birthDate:"07-06-2021",
+    birthDayPersonName:"Divya Rawat",
+    birthDayPersonNickName:"Divsss",
+    birthDaywish1:"Your 23rd birthday doesn’t add a bit of specialty to you, because you’re special on a daily basis.",
+    birthDaywish2:"Happy Birthday to the person who brought my life much joy. It’s always boring without you around.",
+    birthDayPersonImagePath:"../assets/images/birthday_girl.png"
+  }
 
   // speech
   public speech: any;
@@ -72,6 +84,8 @@ export class HomeComponent implements OnInit {
 
 
   ngOnInit(): void {
+
+    this.hideView = !this.dataService.hasDayArrived();
     this.birthdayCountDown();
     this.runService();
     this.genericMessageToDisplay();

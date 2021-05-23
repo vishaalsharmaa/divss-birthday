@@ -14,7 +14,9 @@ export class GalleryComponent implements OnInit {
     imageText: string;
   }>;
 
-  // public images: any = [];
+  public polaroidsOffice: any = [];
+  public polaroidsTrips: any = [];
+  public polaroidsFunDays: any = [];
 
   public modalImage: {
     src: string;
@@ -43,6 +45,9 @@ export class GalleryComponent implements OnInit {
       if(res.length)
       {
         this.images = res;
+        this.polaroidsOffice = response.polaroidsOffice;
+        this.polaroidsTrips = response.polaroidsTrips;
+        this.polaroidsFunDays = response.polaroidsFunDays;
       }
       else
       {

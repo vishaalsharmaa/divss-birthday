@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DateService } from '../services/date-service.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,12 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dataService: DateService) { }
 
   public hideNavbar: boolean = true;
 
   ngOnInit(): void {
-    this.hideNavbar = true;
+    this.hideNavbar = !this.dataService.hasDayArrived();
   }
 
 }

@@ -28,6 +28,20 @@ export class DateService {
 
   constructor(private http: HttpClient) { }
 
+
+  public hasDayArrived()
+  {
+    var today = new Date;
+    today.setHours(0,0,0,0);
+    var hasArrived = false;
+    var targetDate = new Date('07-06-2021');
+
+    if(today.toISOString() == targetDate.toISOString())
+      return hasArrived = true;
+    else
+      return hasArrived = false;
+  }
+
   getFinalCountDownMessages()
   {
     var FINAL_URL = this.PARENT_URL + 'pre-birthday-message.json';

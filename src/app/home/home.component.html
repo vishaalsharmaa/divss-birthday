@@ -1,5 +1,5 @@
-
-<div class="container py-5">
+<!-- COUNTDOWN CONTAINER -->
+<div class="container py-5" *ngIf="hideView">
     <div class="py-5">
         <div class="row">
             <div class="col-lg-8 mx-auto">
@@ -32,7 +32,26 @@
 </div>
 
 
-<!-- 
-  "./node_modules/bootstrap/dist/css/bootstrap.css",
-  "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
- -->
+<!-- BIRTHDAY CONTAINER -->
+<div class="container py-5" *ngIf="!hideView">
+    <div class="py-5">
+        <div class="row">
+            <div class="col-lg-12 mx-auto">
+                <!-- <h2 class="text-white text-center font-weight-light">
+                    <span>{{birthdayConfig.birthDate | date:'longDate'}}</span>
+                </h2> -->
+                <time class="text-center" datetime="2021-06-07" class="icon">
+                    <em>{{birthdayConfig.birthDate | date:'EEEE'}}</em>
+                    <strong>{{birthdayConfig.birthDate | date:'MMMM'}}</strong>
+                    <span>{{birthdayConfig.birthDate | date:'d'}}</span>
+                </time>
+                <h1 class="text-white text-center font-italic font-weight-bold">
+                    <span class="display-1">{{birthdayConfig.birthDayBannerText}}</span>
+                </h1>
+                <div class="text-center">
+                    <img src="{{birthdayConfig.birthDayPersonImagePath}}" height="250" width="200px">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
