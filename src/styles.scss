@@ -5,7 +5,7 @@ html, body { height: 100%; }
 body 
 { 
     margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif; 
+    // font-family: Roboto, "Helvetica Neue", sans-serif; 
 
     background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
 	background-size: 400% 400%;
@@ -23,3 +23,12 @@ body
 		background-position: 0% 50%;
 	}
 }
+
+@font-face {font-family: "Gabriel Weiss' Friends Font";
+	src: url("http://db.onlinewebfonts.com/t/0b7d8a39b62b28cf0cfe3cea90b8baa3.eot"); /* IE9*/
+	src: url("http://db.onlinewebfonts.com/t/0b7d8a39b62b28cf0cfe3cea90b8baa3.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+	url("http://db.onlinewebfonts.com/t/0b7d8a39b62b28cf0cfe3cea90b8baa3.woff2") format("woff2"), /* chrome firefox */
+	url("http://db.onlinewebfonts.com/t/0b7d8a39b62b28cf0cfe3cea90b8baa3.woff") format("woff"), /* chrome firefox */
+	url("http://db.onlinewebfonts.com/t/0b7d8a39b62b28cf0cfe3cea90b8baa3.ttf") format("truetype"), /* chrome firefox opera Safari, Android, iOS 4.2+*/
+	url("http://db.onlinewebfonts.com/t/0b7d8a39b62b28cf0cfe3cea90b8baa3.svg#Gabriel Weiss' Friends Font") format("svg"); /* iOS 4.1- */
+  }

@@ -3,11 +3,14 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
+
 @Injectable({
   providedIn: 'root'
 })
 export class DateService {
   private apiUrl: string = 'enter-your-api-url';
+
   public headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   public API_URL = 'https://raw.githubusercontent.com/vishaalsharmaa/vishaalsharmaa/master/pre-birthday-message.json';
@@ -26,7 +29,7 @@ export class DateService {
     return throwError(errorMessage);
   }
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient , private firebase: AngularFireDatabase) { }
 
 
   public hasDayArrived()

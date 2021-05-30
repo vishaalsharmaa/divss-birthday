@@ -28,30 +28,49 @@
                 </div>
             </div>
         </div>
+
+        <img src="../assets/images/bottom-banner.png" style="position: absolute;
+                right: 0px;
+                bottom: 0px;">
+        
     </div>
 </div>
 
 
 <!-- BIRTHDAY CONTAINER -->
+<!-- <img src="{{birthdayBanner}}" height="35%" width="100%" style="position: absolute; transition: .5s ease;" > -->
 <div class="container py-5" *ngIf="!hideView">
     <div class="py-5">
         <div class="row">
             <div class="col-lg-12 mx-auto">
-                <!-- <h2 class="text-white text-center font-weight-light">
-                    <span>{{birthdayConfig.birthDate | date:'longDate'}}</span>
-                </h2> -->
-                <time class="text-center" datetime="2021-06-07" class="icon">
-                    <em>{{birthdayConfig.birthDate | date:'EEEE'}}</em>
-                    <strong>{{birthdayConfig.birthDate | date:'MMMM'}}</strong>
-                    <span>{{birthdayConfig.birthDate | date:'d'}}</span>
-                </time>
-                <h1 class="text-white text-center font-italic font-weight-bold">
-                    <span class="display-1">{{birthdayConfig.birthDayBannerText}}</span>
-                </h1>
+
                 <div class="text-center">
                     <img src="{{birthdayConfig.birthDayPersonImagePath}}" height="250" width="200px">
                 </div>
+
+                <div class="text-center mt-5">
+                    <img src="https://fontmeme.com/permalink/210530/bb8fd37d5c5707bd6fa3c5f617aca724.png" width="100%">    
+                </div>
+
+                <!-- <h1 class="text-white text-center font-italic font-weight-bold friends-font">
+                    <span class="display-2">{{birthdayConfig.birthDayBannerText}}</span>
+                </h1> -->
+
+                <h2 class="text-white text-center font-weight-light mt-5">
+                    <span>{{birthdayConfig.birthDate | date:'longDate'}}</span>
+                </h2>
+            
+                
+               
             </div>
         </div>
     </div>
 </div>
+
+<!-- 
+        <time class="text-center" datetime="2021-06-07" class="icon">
+                    <em>{{birthdayConfig.birthDate | date:'EEEE'}}</em>
+                    <strong>{{birthdayConfig.birthDate | date:'MMMM'}}</strong>
+                    <span>{{birthdayConfig.birthDate | date:'d'}}</span>
+                </time>
+ -->

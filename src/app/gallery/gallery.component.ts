@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DateService } from '../services/date-service.service';
+import {AngularFireStorage} from '@angular/fire/storage';
+
 
 @Component({
   selector: 'app-gallery',
@@ -27,7 +29,7 @@ export class GalleryComponent implements OnInit {
 
   public defaultImage = '../assets/images/image_loader.gif';
 
-  constructor(private dataService: DateService , private matSnackBar: MatSnackBar)
+  constructor(private dataService: DateService , private matSnackBar: MatSnackBar, private afStorage: AngularFireStorage)
   {
     this.images = [];
     this.modalImage = {src: '', text: ''};

@@ -1,9 +1,9 @@
 <div class="container">
-    <div class="row">
-        <div class="col-md-12 mx-auto">
-            <mat-tab-group>
-                <mat-tab label="Manusmriti">
-                    <div class="gallery">
+    <div class="row py-5">
+        <div class="col-lg-12 mx-auto">
+            <mat-tab-group mat-align-tabs="center">
+                <mat-tab label="Om Manusmriti">
+                    <div>
                         <mat-grid-list cols="3" rowHeight="3:2">
                             <mat-grid-tile *ngFor="let image of images" (click)="showDialog(image)">
                                 <img [defaultImage]="defaultImage" [lazyLoad]="image.imagePath">
@@ -11,20 +11,32 @@
                         </mat-grid-list>
                     </div>
                 </mat-tab>
-                <mat-tab label="Office">
-                    <div class='gallery'>
+                <mat-tab label="The Office">
+                    <div>
                         <mat-grid-list cols="3" rowHeight="3:2">
-                            <mat-grid-tile *ngFor="let image of images" (click)="showDialog(image)">
+                            <mat-grid-tile *ngFor="let image of polaroidsOffice" (click)="showDialog(image)">
                                 <img [defaultImage]="defaultImage" [lazyLoad]="image.imagePath">
                             </mat-grid-tile>
                         </mat-grid-list>
                     </div>
                 </mat-tab>
                 <mat-tab label="Trips">
-                    
+                    <div>
+                        <mat-grid-list cols="3" rowHeight="3:2">
+                            <mat-grid-tile *ngFor="let image of polaroidsTrips" (click)="showDialog(image)">
+                                <img [defaultImage]="defaultImage" [lazyLoad]="image.imagePath">
+                            </mat-grid-tile>
+                        </mat-grid-list>
+                    </div>
                 </mat-tab>
-                <mat-tab label="Moments">
-
+                <mat-tab label="Remember When">
+                    <div class='gallery'>
+                        <mat-grid-list cols="3" rowHeight="3:2">
+                            <mat-grid-tile *ngFor="let image of polaroidsFunDays" (click)="showDialog(image)">
+                                <img [defaultImage]="defaultImage" [lazyLoad]="image.imagePath">
+                            </mat-grid-tile>
+                        </mat-grid-list>
+                    </div>
                 </mat-tab>
             </mat-tab-group>
         </div>
@@ -39,5 +51,3 @@
         <p>{{modalImage.text}}</p>
     </div>
 </app-modal>
-
- <!-- [src]="modalImage.src" -->

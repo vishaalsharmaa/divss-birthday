@@ -20,8 +20,18 @@ import { DateService } from './services/date-service.service';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {MatCardModule} from '@angular/material/card';
+
 
 import { LazyLoadImageModule , LAZYLOAD_IMAGE_HOOKS, ScrollHooks} from 'ng-lazyload-image'; // <-- import it
+
+
+import {AngularFireStorageModule} from '@angular/fire/storage';
+import { AngularFireModule } from '@angular/fire';
+
+import {AngularFireStorage} from '@angular/fire/storage'
+import { environment } from 'src/environments/environment';
+
 
 
 @NgModule({
@@ -43,8 +53,11 @@ import { LazyLoadImageModule , LAZYLOAD_IMAGE_HOOKS, ScrollHooks} from 'ng-lazyl
     MatGridListModule,
     MatTabsModule,
     HttpClientModule,
+    MatCardModule,
     MatSnackBarModule,
-    LazyLoadImageModule
+    LazyLoadImageModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireStorageModule
   ],
   providers: [DateService],
   bootstrap: [AppComponent]
