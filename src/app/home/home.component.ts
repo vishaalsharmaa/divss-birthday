@@ -14,6 +14,9 @@ import Speech from 'speak-tts';
 export class HomeComponent implements OnInit {
 
   public birthdayBanner: string = '../assets/images/birthday_banner.png';
+
+  public rachelFooterImage:string = '../assets/images/bottom-banner.png';
+  public joeyFooterImage:string = '../assets/images/jandler.png';
   
   // public countDownDate = new Date('Jul 7, 2021 12:00:00').getTime();
   // public countDownDate = new Date('Apr 18, 2021 21:10:00').getTime();
