@@ -14,7 +14,7 @@ export class WishesComponent implements OnInit {
   public imageBannerURL= 'https://raw.githubusercontent.com/vishaalsharmaa/divss-birthday/master/src/assets/images/birthday.svg';
   public wishesByFriends:any = [];
 
-  public defaultImage = '../assets/images/image_loader.gif';
+  public defaultImage = 'assets/images/image_loader.gif';
 
   ngOnInit(): void {
 

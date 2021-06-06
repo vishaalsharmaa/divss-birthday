@@ -27,7 +27,7 @@ export class GalleryComponent implements OnInit {
 
   public isShowModal: boolean;
 
-  public defaultImage = '../assets/images/image_loader.gif';
+  public defaultImage = 'assets/images/image_loader.gif';
 
   constructor(private dataService: DateService , private matSnackBar: MatSnackBar, private afStorage: AngularFireStorage)
   {

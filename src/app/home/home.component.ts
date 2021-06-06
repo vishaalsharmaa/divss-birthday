@@ -13,10 +13,9 @@ import Speech from 'speak-tts';
 })
 export class HomeComponent implements OnInit {
 
-  public birthdayBanner: string = '../assets/images/birthday_banner.png';
-
-  public rachelFooterImage:string = '../assets/images/bottom-banner.png';
-  public joeyFooterImage:string = '../assets/images/jandler.png';
+  public birthdayBanner: string = 'assets/images/birthday_banner.png';
+  public rachelFooterImage:string = 'assets/images/bottom-banner.png';
+  public joeyFooterImage:string = 'assets/images/jandler.png';
   
   // public countDownDate = new Date('Jul 7, 2021 12:00:00').getTime();
   // public countDownDate = new Date('Apr 18, 2021 21:10:00').getTime();
@@ -45,8 +44,8 @@ export class HomeComponent implements OnInit {
     birthDayPersonNickName:"Divsss",
     birthDaywish1:"Your 23rd birthday doesn’t add a bit of specialty to you, because you’re special on a daily basis.",
     birthDaywish2:"Happy Birthday to the person who brought my life much joy. It’s always boring without you around.",
-    birthDayPersonImagePath:"../assets/images/birthday_girl.png"
-  }
+    birthDayPersonImagePath:"assets/images/birthday_girl.png"
+  };
 
   // speech
   public speech: any;
