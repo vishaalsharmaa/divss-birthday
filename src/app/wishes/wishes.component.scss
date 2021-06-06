@@ -62,3 +62,9 @@
   #giganticCard .space {
     height: 100px;
   }
+
+  .fit-image-into-card {
+    object-fit: cover;
+    width:348px;
+    height:243px;
+  }

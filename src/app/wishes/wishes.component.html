@@ -16,7 +16,7 @@
   <div class="row">
     <div class="col-md-4 mt-2 mb-2 mx-auto" *ngFor="let item of wishesByFriends">
       <div class="card">
-        <img class="card-img-top" src="{{item.imageURL}}" alt="Card image cap">
+        <img class="card-img-top fit-image-into-card" [defaultImage]="defaultImage" [lazyLoad]="item.imageURL" alt="Card image cap">
         <div class="card-body">
           <p class="card-text text-md-left font-weight-normal">{{item.message}}</p>
           <footer class="blockquote-footer"><cite title="Source Title">{{item.by}}</cite></footer>
@@ -25,4 +25,3 @@
     </div>
   </div>
 </div>
-
