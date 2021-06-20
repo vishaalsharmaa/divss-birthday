@@ -1,4 +1,4 @@
-<div id="giganticCard" #giganticCard>
+<!-- <div id="giganticCard" #giganticCard>
   <div class="birthday-card-body">
     <div class="card">
       <img src="{{imageBannerURL}}" alt="birthday" class="birthday">
@@ -10,9 +10,16 @@
         <div class="space"></div>
       </div>
   </div>
-</div>
+</div> -->
 
 <div class="container" *ngIf="wishesByFriends">
+
+  <div class="row mt-4 px-3">
+    <div class="col-md-12">
+      <h1 class="fs-1 text-white text-center font-weight-light font-italic">Here's what your friends have to say...</h1>
+    </div>
+  </div>
+
   <div class="row">
     <div class="col-md-4 mt-2 mb-2 mx-auto" *ngFor="let item of wishesByFriends">
       <div class="card">
