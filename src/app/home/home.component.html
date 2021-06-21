@@ -43,8 +43,15 @@
         <div class="row">
             <div class="col-lg-12 mx-auto">
 
+                <div class="pyro">
+                    <div class="before"></div>
+                    <div class="after"></div>
+                </div>
+
                 <div class="text-center">
-                    <img src="{{birthdayConfig.birthDayPersonImagePath}}" height="250" width="200px">
+                    <img class="ml-2 mr-2" src="https://media.giphy.com/media/jUWnoiQmjLIusD1x2V/giphy.gif" height="250" width="200px">
+                    <img class="ml-2 mr-2" src="{{birthdayConfig.birthDayPersonImagePath}}" height="250" width="200px">
+                    <img class="ml-2 mr-2" src="https://media.giphy.com/media/jUWnoiQmjLIusD1x2V/giphy.gif" height="250" width="200px">
                 </div>
 
                 <div class="text-center mt-5">
@@ -58,18 +65,21 @@
                 <h2 class="text-white text-center font-weight-light mt-5">
                     <span>{{birthdayConfig.birthDate | date:'longDate'}}</span>
                 </h2>
-            
-                
-               
+    
             </div>
         </div>
     </div>
 </div>
 
+<div>
+    <app-footer></app-footer>
+</div>
+
+
 <!-- 
-        <time class="text-center" datetime="2021-06-07" class="icon">
-                    <em>{{birthdayConfig.birthDate | date:'EEEE'}}</em>
-                    <strong>{{birthdayConfig.birthDate | date:'MMMM'}}</strong>
-                    <span>{{birthdayConfig.birthDate | date:'d'}}</span>
-                </time>
+    <time class="text-center" datetime="2021-06-07" class="icon">
+        <em>{{birthdayConfig.birthDate | date:'EEEE'}}</em>
+        <strong>{{birthdayConfig.birthDate | date:'MMMM'}}</strong>
+        <span>{{birthdayConfig.birthDate | date:'d'}}</span>
+    </time>
  -->
