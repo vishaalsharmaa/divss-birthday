@@ -35,6 +35,7 @@ export class HomeComponent implements OnInit {
 
   public displayMessage:any = [];
   public dailyGenerricMessage:any;
+  public genericMessagePresent: boolean = false;
 
 
   public birthdayConfig: any = {
@@ -164,8 +165,13 @@ export class HomeComponent implements OnInit {
     this.dataService.getGenericMessage().subscribe((response:any)=> {
       
       if(response.status == "SUCCESS") {
+        this.genericMessagePresent = true;
         var res = response.dailybugle;
         this.dailyGenerricMessage = res;
+      }
+      else if(response.status == "ERROR") {
+        this.genericMessagePresent = false;
+        this.dailyGenerricMessage = response.dailybugle;
       }
       else {
         console.error("An error occuired.");
