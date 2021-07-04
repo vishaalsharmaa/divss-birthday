@@ -13,8 +13,6 @@ export class DateService {
 
   public headers = new HttpHeaders().set('Content-Type', 'application/json');
 
-  public API_URL = 'https://raw.githubusercontent.com/vishaalsharmaa/vishaalsharmaa/master/pre-birthday-message.json';
-
   public PARENT_URL = 'https://raw.githubusercontent.com/vishaalsharmaa/vishaalsharmaa/master/';
 
   // Handle Errors 
@@ -38,40 +36,35 @@ export class DateService {
     today.setHours(0,0,0,0);
     var hasArrived = false;
     var targetDate = new Date('07-06-2021');
-
-    if(today.toISOString() == targetDate.toISOString())
+    
+    if(today.toISOString() >= targetDate.toISOString())
       return hasArrived = true;
     else
       return hasArrived = false;
   }
 
-  getFinalCountDownMessages()
-  {
-    var FINAL_URL = this.PARENT_URL + 'pre-birthday-message.json';
-    return this.http.get(this.API_URL).pipe(catchError(this.error));
+  getFinalCountDownMessages() {
+    var API_URL = 'https://raw.githubusercontent.com/vishaalsharmaa/vishaalsharmaa/master/pre-birthday-message.json';
+    return this.http.get(API_URL).pipe(catchError(this.error));
   }
 
-  getGenericMessage()
-  {
+  getGenericMessage() {
     var GENERIC_MSG_URL = 'https://raw.githubusercontent.com/vishaalsharmaa/vishaalsharmaa/master/generic-message.json';
     return this.http.get(GENERIC_MSG_URL).pipe(catchError(this.error));
   }
 
-  getBirthdayWishes()
-  {
+  getBirthdayWishes() {
     var BIRTHDAY_WISHES ='https://raw.githubusercontent.com/vishaalsharmaa/vishaalsharmaa/master/wishes-by-friends.json';
     return this.http.get(BIRTHDAY_WISHES).pipe(catchError(this.error));
   }
 
-  getGallary()
-  {
+  getGallary() {
     var GALLARY_API = 'https://raw.githubusercontent.com/vishaalsharmaa/vishaalsharmaa/master/gallary-content.json';
     return this.http.get(GALLARY_API).pipe(catchError(this.error));
   }
 
 
-  getIP()
-  {
+  getIP() {
     var IP_FINDER = 'http://api.ipify.org/?format=json';
     return this.http.get(IP_FINDER);
   }

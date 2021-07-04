@@ -18,7 +18,6 @@ export class HomeComponent implements OnInit {
   public joeyFooterImage:string   = 'assets/images/jandler.png';
   
   // public countDownDate = new Date('Jul 7, 2021 12:00:00').getTime();
-  // public countDownDate = new Date('Apr 18, 2021 21:10:00').getTime();
 
   public countDownDate = new Date('Jul 7, 2021').getTime();
 
