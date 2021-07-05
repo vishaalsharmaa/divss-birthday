@@ -17,9 +17,9 @@ export class HomeComponent implements OnInit {
   public rachelFooterImage:string = 'assets/images/bottom-banner.png';
   public joeyFooterImage:string   = 'assets/images/jandler.png';
   
-  // public countDownDate = new Date('Jul 7, 2021 12:00:00').getTime();
+  // public countDownDate = new Date('Jul 6, 2021 12:00:00').getTime();
 
-  public countDownDate = new Date('Jul 7, 2021').getTime();
+  public countDownDate = new Date('Jul 6, 2021').getTime();
 
   public hideView = true;  
   public distance: any;
