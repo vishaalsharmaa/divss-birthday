@@ -35,7 +35,7 @@ export class DateService {
     var today = new Date;
     today.setHours(0,0,0,0);
     var hasArrived = false;
-    var targetDate = new Date('07-06-2021');
+    var targetDate = new Date('07-06-2022');
     
     if(today.toISOString() >= targetDate.toISOString())
       return hasArrived = true;

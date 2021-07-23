@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
   
   // public countDownDate = new Date('Jul 6, 2021 12:00:00').getTime();
 
-  public countDownDate = new Date('Jul 6, 2021').getTime();
+  public countDownDate = new Date('Jul 6, 2022').getTime();
 
   public hideView = true;  
   public distance: any;
