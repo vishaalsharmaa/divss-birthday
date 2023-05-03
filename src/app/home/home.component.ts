@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
   
   // public countDownDate = new Date('Jul 6, 2021 12:00:00').getTime();
 
-  public countDownDate = new Date('Jul 6, 2022').getTime();
+  public countDownDate = new Date('Jul 6, 2023').getTime();
 
   public hideView = true;  
   public distance: any;
@@ -39,7 +39,7 @@ export class HomeComponent implements OnInit {
 
   public birthdayConfig: any = {
     birthDayBannerText:"Happy Birthday Divsss",
-    birthDate:"07-06-2021",
+    birthDate:"07-06-2023",
     birthDayPersonName:"Divya Rawat",
     birthDayPersonNickName:"Divsss",
     birthDaywish1:"Your 23rd birthday doesn’t add a bit of specialty to you, because you’re special on a daily basis.",
